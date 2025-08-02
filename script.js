@@ -46,12 +46,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (userAnswerInt === correctAnswer) {
             resultElement.textContent = 'せいかい！';
             resultElement.style.color = 'green';
+            nextButton.style.display = 'block';
+            keypad.style.display = 'none'; // 正解したらキーパッドを隠す
         } else {
-            resultElement.textContent = `まちがい... こたえは ${correctAnswer}`;
+            resultElement.textContent = 'まちがい！もういちどやってみよう';
             resultElement.style.color = 'red';
+            // 答えをクリアして再挑戦
+            userAnswer = '';
+            answerDisplay.textContent = userAnswer;
         }
-        nextButton.style.display = 'block';
-        keypad.style.display = 'none'; // 正解・不正解表示中はキーパッドを隠す
     }
 
     function handleKeyPress(e) {
